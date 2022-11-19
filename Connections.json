@@ -1,5 +1,5 @@
 {
   "Connections": {
-    "Master" :  ""
+    "MasterDb": "User ID=postgre;Password=mysecretpassword;Host=localhost;Port=5432;Database=postgre;Pooling=true"
   }
 }
