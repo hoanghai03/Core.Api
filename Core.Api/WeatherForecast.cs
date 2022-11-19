@@ -4,12 +4,13 @@ namespace Core.Api
 {
     public class WeatherForecast
     {
-        public DateTime Date { get; set; }
+        //static void DoSomething(int seconds,string mgs,ConsoleColor color)
+        //{
 
-        public int TemperatureC { get; set; }
-
-        public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
-
-        public string Summary { get; set; }
+        //}
+        //static void Main(string[] args)
+        //{
+        //    Console.WriteLine("Hello world!! hihhi");
+        //}
     }
 }
