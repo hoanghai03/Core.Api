@@ -1,20 +1,23 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <PackageReference Include="Dapper" Version="2.0.123" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
-    <PackageReference Include="Npgsql" Version="7.0.0" />
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.0.123" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration" Version="6.0.0" />
+		<PackageReference Include="Npgsql" Version="7.0.0" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
-    <ProjectReference Include="..\Core.Domain\Core.Domain.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
+		<ProjectReference Include="..\Core.Domain\Core.Domain.csproj" />
+	</ItemGroup>
 
 </Project>

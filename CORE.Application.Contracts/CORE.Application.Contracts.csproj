@@ -6,9 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Bases\" />
     <Folder Include="Cruds\" />
     <Folder Include="Https\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Core.Domain\Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

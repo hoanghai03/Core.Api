@@ -1,4 +1,5 @@
 ﻿using Core.Domain.Shared.Configs;
+using Core.HostBase;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -35,7 +36,13 @@ namespace Core.Api
             });
 
             // lấy config connection
-            services.Configure<CenterConfigs>(Configuration);
+            //services.AddOptions();
+            //var centerConfigs = Configuration.GetSection("CenterConfigs");
+            //services.Configure<CenterConfigs>(centerConfigs);
+
+            // inject 
+            HostBaseFactory.InjectDatabaseService(services, Configuration);
+            HostBaseFactory.InjectServices(services, Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

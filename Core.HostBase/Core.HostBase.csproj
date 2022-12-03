@@ -6,13 +6,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Configs\" />
-    <Folder Include="Contexts\" />
-    <Folder Include="Querys\" />
+    <Folder Include="Filters\" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
+    <ProjectReference Include="..\CORE.Application\CORE.Application.csproj" />
+    <ProjectReference Include="..\Core.Domain.Postgre\Core.Domain.Postgre.csproj" />
   </ItemGroup>
 
 </Project>

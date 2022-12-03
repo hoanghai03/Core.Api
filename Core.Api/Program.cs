@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace Core.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                })
+        .ConfigureAppConfiguration(config => config.AddJsonFile(Path.Combine(AppContext.BaseDirectory, "../../../../Config "), false, true));
     }
 }

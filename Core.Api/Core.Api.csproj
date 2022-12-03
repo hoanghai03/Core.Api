@@ -9,7 +9,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CORE.Application.Contracts\CORE.Application.Contracts.csproj" />
     <ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Core.HostBase\Core.HostBase.csproj" />
   </ItemGroup>
 
 </Project>
