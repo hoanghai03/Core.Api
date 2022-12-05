@@ -43,5 +43,7 @@ namespace Core.Domain.Repos
         /// <returns></returns>
         List<T> Query<T>(CommandType commandType, IDbConnection cnn, IDbTransaction transaction, string sql, object param, int commandTimeout = DBConstant.CommonTimeoutNone);
 
+        int ExecuteNonQuery(CommandType commandType, IDbConnection cnn, IDbTransaction transaction, string sql, object param, int commandTimeOut = DBConstant.CommonTimeoutNone);
+
     }
 }

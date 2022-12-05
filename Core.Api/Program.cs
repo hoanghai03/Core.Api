@@ -1,3 +1,4 @@
+using Core.HostBase.Configurations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
@@ -23,7 +24,6 @@ namespace Core.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                })
-        .ConfigureAppConfiguration(config => config.AddJsonFile(Path.Combine(AppContext.BaseDirectory, "../../../../Config "), false, true));
+                }).ConfigureAppsettings(typeof(Program),new string[] { });
     }
 }

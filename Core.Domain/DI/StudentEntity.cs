@@ -14,6 +14,6 @@ namespace Core.Domain.DI
         public Guid id { get; set; }
         public string student_code { get; set; }
         public string student_name{ get; set; }
-        public int age { get; set; }
+        public int? age { get; set; }
     }
 }

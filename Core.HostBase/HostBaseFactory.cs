@@ -1,7 +1,9 @@
 ﻿using Core.Domain.Postgre;
+using Core.HostBase.Filters;
 using CORE.Application;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,6 +32,22 @@ namespace Core.HostBase
         public static void InjectServices(IServiceCollection services,IConfiguration configuration)
         {
             ApplicationFactory.InjectServices(services, configuration);
+        }
+
+        public static void InjectActionFilterGlobal(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddControllers(
+                options =>
+                {
+                    options.Filters.Add<CustomExceptionFilter>();
+                }
+            );
+
+            //services.AddMvc(options =>
+            //{
+            //    options.Filters.Add(new CustomExceptionFilter());
+            //});
+
         }
     }
 }

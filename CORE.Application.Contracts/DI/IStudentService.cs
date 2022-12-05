@@ -10,5 +10,7 @@ namespace CORE.Application.Contracts.DI
 {
     public interface IStudentService : ICrudBaseService<StudentEntity, StudentDtoEdit>
     {
+        Task DeleteStudent(Guid id);
+        Task InsertStudent(List<StudentEntity> students);
     }
 }

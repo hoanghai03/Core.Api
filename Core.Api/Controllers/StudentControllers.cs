@@ -17,5 +17,19 @@ namespace Core.Api.Controllers
         public StudentControllers(IStudentService service) : base(service)
         {
         }
+
+        [HttpPost("/delete_student")]
+        public IActionResult DeleteStudent([FromBody]Guid id)
+        {
+                var rs = _service.DeleteStudent(id);
+                return Ok(rs);
+        }
+
+        [HttpPost("/insert_batch")]
+        public IActionResult Insert([FromBody] List<StudentEntity> students)
+        {
+            var rs = _service.InsertStudent(students);
+            return Ok(rs);
+        }
     }
 }
