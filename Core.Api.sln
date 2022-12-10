@@ -5,11 +5,6 @@ VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Api", "Core.Api\Core.Api.csproj", "{A15B97E6-807A-40A0-82E6-31EE89C801F2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{C095AA04-9EBC-42B3-98C3-F02E5DC5E69D}"
-	ProjectSection(SolutionItems) = preProject
-		Connections.json = Connections.json
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Doc", "Doc", "{1E3BE3B9-4302-49AC-8C5F-B3CAB8D3B273}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{29904592-1CB0-4C98-9475-3E9D67873FCC}"
@@ -24,9 +19,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain", "Core.Domain\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain.MySql", "Core.Domain.MySql\Core.Domain.MySql.csproj", "{C8F7C8E7-BC69-46E6-9586-759EC9E01C1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Domain.Postgre", "Core.Domain.Postgre\Core.Domain.Postgre.csproj", "{4DA1A17D-926D-43A8-B80F-370A97851E55}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain.Postgre", "Core.Domain.Postgre\Core.Domain.Postgre.csproj", "{4DA1A17D-926D-43A8-B80F-370A97851E55}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core.Domain.Shared", "Core.Domain.Shared\Core.Domain.Shared.csproj", "{E46FDD1E-D5D7-4C93-A26C-5AC39E02AE75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.Domain.Shared", "Core.Domain.Shared\Core.Domain.Shared.csproj", "{E46FDD1E-D5D7-4C93-A26C-5AC39E02AE75}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core.HostBase", "Core.HostBase\Core.HostBase.csproj", "{ADC5F7A5-7F2C-49BB-AA54-FC1AA448D295}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Config", "Config", "{341E7A55-EC7A-4301-B57C-BDA4EA09E0AA}"
+	ProjectSection(SolutionItems) = preProject
+		Config\Connections.json = Config\Connections.json
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -62,6 +64,10 @@ Global
 		{E46FDD1E-D5D7-4C93-A26C-5AC39E02AE75}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E46FDD1E-D5D7-4C93-A26C-5AC39E02AE75}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E46FDD1E-D5D7-4C93-A26C-5AC39E02AE75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADC5F7A5-7F2C-49BB-AA54-FC1AA448D295}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADC5F7A5-7F2C-49BB-AA54-FC1AA448D295}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADC5F7A5-7F2C-49BB-AA54-FC1AA448D295}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADC5F7A5-7F2C-49BB-AA54-FC1AA448D295}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +80,7 @@ Global
 		{C8F7C8E7-BC69-46E6-9586-759EC9E01C1F} = {29904592-1CB0-4C98-9475-3E9D67873FCC}
 		{4DA1A17D-926D-43A8-B80F-370A97851E55} = {29904592-1CB0-4C98-9475-3E9D67873FCC}
 		{E46FDD1E-D5D7-4C93-A26C-5AC39E02AE75} = {29904592-1CB0-4C98-9475-3E9D67873FCC}
+		{ADC5F7A5-7F2C-49BB-AA54-FC1AA448D295} = {29904592-1CB0-4C98-9475-3E9D67873FCC}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9050D02B-71DD-4F42-964C-9ED0F1F53EC5}

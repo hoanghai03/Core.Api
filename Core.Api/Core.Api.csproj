@@ -2,14 +2,29 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <StartupObject>Core.Api.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="C:\Users\hoang\.nuget\packages\nlog.config\4.6.3\contentFiles\any\any\NLog.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="C:\Users\hoang\.nuget\packages\nlog.config\4.6.3\contentFiles\any\any\NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="NLog" Version="4.6.3" />
+    <PackageReference Include="NLog.Config" Version="4.6.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CORE.Application.Contracts\CORE.Application.Contracts.csproj" />
     <ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Core.HostBase\Core.HostBase.csproj" />
   </ItemGroup>
 
 </Project>

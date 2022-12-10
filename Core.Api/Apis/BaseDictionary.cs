@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.Domain.DI;
+using CORE.Application.Contracts.DI;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,9 +9,10 @@ using System.Threading.Tasks;
 
 namespace Core.Api.Apis
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BaseDictionary : ControllerBase
-    {
-    }
+    //public class BaseDictionary : CrudBaseControllers<IStudentService, StudentEntity, StudentDtoEdit, int>
+    //{
+    //    public BaseDictionary(IStudentService service) : base(service)
+    //    {
+    //    }
+    //}
 }
