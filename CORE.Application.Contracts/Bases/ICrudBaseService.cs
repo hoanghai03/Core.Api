@@ -1,4 +1,5 @@
-﻿using Core.Domain.Shared.Entities;
+﻿using Core.Domain.Shared.Cruds;
+using Core.Domain.Shared.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace CORE.Application.Contracts.Bases
         /// <typeparam name="TKey"></typeparam>
         /// <param name="id"></param>
         /// <returns></returns>
-        TEntityDtoEdit GetEdit<TKey>(TKey id); 
+        TEntityDtoEdit GetEdit<TKey>(TKey id);
+        Task<PagingResult> GetPagingAsync(string sort, int skip, int take, string columns, string filter = null, string tableName = "", string schemaName = "", string viewName = "",Type entityType = null);
     }
 }

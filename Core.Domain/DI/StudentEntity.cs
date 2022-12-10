@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Core.Domain.DI
 {
-    [Table("student")]
+    [Table("student",Schema = "public")]
     public class StudentEntity : BaseEntity
     {
         public Guid id { get; set; }

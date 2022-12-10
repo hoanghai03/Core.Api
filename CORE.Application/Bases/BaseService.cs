@@ -1,4 +1,5 @@
 ﻿using Core.Domain.Repos;
+using Core.Domain.Shared.Cruds;
 using CORE.Application.Contracts.Bases;
 using System;
 using System.Collections.Generic;
@@ -16,5 +17,6 @@ namespace CORE.Application.Bases
         {
             _repo = repo;
         }
+
     }
 }

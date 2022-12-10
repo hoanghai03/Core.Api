@@ -10,8 +10,6 @@ using System.Threading.Tasks;
 
 namespace Core.Api.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
     public class StudentControllers : CrudBaseControllers<IStudentService, StudentEntity, StudentDtoEdit, Guid>
     {
         public StudentControllers(IStudentService service) : base(service)

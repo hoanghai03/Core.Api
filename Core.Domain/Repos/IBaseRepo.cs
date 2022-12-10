@@ -1,6 +1,8 @@
 ﻿using Core.Domain.Shared.Constants;
+using Core.Domain.Shared.Cruds;
 using Core.Domain.Shared.Enums;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -44,6 +46,10 @@ namespace Core.Domain.Repos
         List<T> Query<T>(CommandType commandType, IDbConnection cnn, IDbTransaction transaction, string sql, object param, int commandTimeout = DBConstant.CommonTimeoutNone);
 
         int ExecuteNonQuery(CommandType commandType, IDbConnection cnn, IDbTransaction transaction, string sql, object param, int commandTimeOut = DBConstant.CommonTimeoutNone);
+
+        Task<IList> QueryAsync(IDbConnection cnn, string sql, Dictionary<string,object> param = null, IDbTransaction transaction = null, int? commandTimeOut = null, CommandType? commandType = null);
+
+        Task<PagingResult> GetPagingAsync(Type type, string sort, int skip, int take, string columns, string filter = null, string tableName = "", string schemaName = "", string viewName = "");
 
     }
 }

@@ -24,6 +24,11 @@ namespace Core.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                }).ConfigureAppsettings(typeof(Program),new string[] { });
+                }).ConfigureAppsettings(typeof(Program), new string[] { });
+            //.ConfigureLogging(logging =>
+            //    {
+            //        logging.ClearProviders();
+            //        logging.SetMinimumLevel(Microsoft.Extensions.Logging.LogLevel.Trace);
+            //    });
     }
 }

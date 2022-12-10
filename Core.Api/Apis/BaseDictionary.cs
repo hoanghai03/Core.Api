@@ -9,12 +9,10 @@ using System.Threading.Tasks;
 
 namespace Core.Api.Apis
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class BaseDictionary : CrudBaseControllers<IStudentService, StudentEntity, StudentDtoEdit, int>
-    {
-        public BaseDictionary(IStudentService service) : base(service)
-        {
-        }
-    }
+    //public class BaseDictionary : CrudBaseControllers<IStudentService, StudentEntity, StudentDtoEdit, int>
+    //{
+    //    public BaseDictionary(IStudentService service) : base(service)
+    //    {
+    //    }
+    //}
 }

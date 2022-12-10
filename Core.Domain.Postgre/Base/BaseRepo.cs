@@ -2,14 +2,21 @@
 using Core.Domain.Repos;
 using Core.Domain.Shared.Configs;
 using Core.Domain.Shared.Core;
+using Core.Domain.Shared.Cruds;
 using Core.Domain.Shared.Enums;
+using Dapper;
 using Microsoft.Extensions.Configuration;
 using Npgsql;
 using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Threading.Tasks;
 using System.Web.Http;
 
 namespace Core.Domain.Postgre.Base
@@ -225,6 +232,86 @@ namespace Core.Domain.Postgre.Base
                 return true;
             }
             return false;
+        }
+
+        public virtual async Task<PagingResult> GetPagingAsync(Type type,string sort,int skip,int take,string columns,string filter = null,string tableName="",string schemaName = "",string viewName = "")
+        {
+            var param = new Dictionary<string, object>();
+            var table = GetTableName(type, tableName);
+            var schema = GetSchemaName(type, schemaName);
+            var pagingSource = GetPagingSource(viewName, table, schema);
+            PagingResult result = new PagingResult();
+            IDbConnection cnn = null;
+            try
+            {
+                cnn = GetOpenConnection(DatabaseSide.ReadSide);
+
+                var sb = new StringBuilder($"Select {columns} from {pagingSource}");
+
+                sb.Append($" limit {skip} ");
+                if(take > 0)
+                {
+                    sb.Append($" offset {take} ");
+                }
+                result.PageData = await QueryAsync(cnn, sb.ToString(),param);
+            }
+            finally
+            {
+                CloseConnection(cnn);
+            }
+            return result;
+        }
+
+        public async Task<IList> QueryAsync(IDbConnection cnn, string sql, Dictionary<string,object> param = null, IDbTransaction transaction = null, int? commandTimeOut = null, CommandType? commandType = null)
+        {     
+            var dynamicParams = new DynamicParameters();
+            if(param != null)
+            {
+                foreach(var item in param)
+                {
+                    dynamicParams.Add(item.Key, item.Value);
+                }
+            }
+            var data = await cnn.QueryAsync(sql,dynamicParams,commandType: commandType);
+            return data.ToList();
+        }
+
+        protected virtual string GetTableName(Type type,string tableName)
+        {
+            if(!string.IsNullOrEmpty(tableName))
+            {
+                return tableName;
+            }
+
+            var attr = type.GetCustomAttribute<TableAttribute>();
+            if (attr == null)
+            {
+                return null;
+            }
+            return $"{attr.Name}";
+        }
+
+        protected virtual string GetSchemaName(Type type, string schemaName)
+        {
+            if (!string.IsNullOrEmpty(schemaName))
+            {
+                return schemaName;
+            }
+
+            var attr = type.GetCustomAttribute<TableAttribute>();
+            if (attr == null)
+            {
+                return null;
+            }
+            return $"{attr.Schema}";
+        }
+
+        public virtual string GetPagingSource(string view ,string table,string schema)
+        {
+            if(!string.IsNullOrEmpty(view))
+            {
+                return $"{schema}.{view}";
+            } else return $"{schema}.{table}";
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Core.Domain.DI;
+using Core.Domain.Shared.Cruds;
 using CORE.Application.Contracts.Bases;
 using System;
 using System.Collections.Generic;

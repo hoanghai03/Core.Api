@@ -1,4 +1,5 @@
 ﻿using Core.Domain.Repos;
+using Core.Domain.Shared.Cruds;
 using Core.Domain.Shared.Entities;
 using Core.Domain.Shared.Enums;
 using CORE.Application.Contracts.Bases;
@@ -16,6 +17,7 @@ namespace CORE.Application.Bases
         where TEntity : BaseEntity
         where TEntityDtoEdit : TEntity, IRecordState
     {
+        protected static readonly Type EntityType = typeof(TEntity);
         public CrudBaseService(TRepo repo) : base(repo)
         {
         }
@@ -34,6 +36,16 @@ namespace CORE.Application.Bases
             {
                 _repo.CloseConnection(cnn);
             }
+        }
+
+        public async Task<PagingResult> GetPagingAsync(string sort, int skip, int take, string columns, string filter = null, string tableName = "", string schemaName = "", string viewName = "",Type entityType = null )
+        {
+            var type = EntityType;
+            if(entityType != null)
+            {
+                type = entityType;
+            }
+            return await _repo.GetPagingAsync(type, sort, skip, take, columns, filter, tableName, schemaName, viewName);
         }
     }
 }
