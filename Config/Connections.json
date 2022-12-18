@@ -2,4 +2,9 @@
   "ConnectionStrings": {
     "MasterDb": "User ID=postgres;Password=mysecretpassword;Host=localhost;Port=5432;Database=postgres;Pooling=true"
   },
+  "JWT": {
+    "ValidAudience": "http://localhost:5001",
+    "ValidIssuer": "http://localhost:5001",
+    "Secret": "ByYM000OLlMQG6VVVp1OH7Xzyr7gHuw1qvUC5dcGt3SNM"
+  }
 }

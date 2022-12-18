@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Core.HostBase.Middware;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -7,10 +9,12 @@ using System.Threading.Tasks;
 
 namespace Core.Api.Controllers
 {
+    
     [Route("api/v1/[controller]/[action]")]
     [ApiController]
     public class CartController : ControllerBase
     {
+        [ApiKey]
         [HttpGet]
         public string First()
         {

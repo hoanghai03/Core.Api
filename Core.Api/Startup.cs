@@ -1,6 +1,7 @@
 ﻿using Core.Domain.Shared.Configs;
 using Core.Domain.Shared.Constants;
 using Core.HostBase;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -12,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Console;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
@@ -20,6 +22,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -46,6 +49,30 @@ namespace Core.Api
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Core.Api", Version = "v1" });
             });
+
+            #region Authen
+            //services.AddAuthentication(authOptions =>
+            //{
+            //    authOptions.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    authOptions.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            //    authOptions.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
+
+            //}).AddJwtBearer(jwtOptions =>
+            //{
+            //    jwtOptions.TokenValidationParameters = new TokenValidationParameters
+            //    {
+            //        ValidateAudience = true,
+            //        ValidAudience = Configuration["JwtSettings:Issuer"],
+            //        ValidateIssuer = true,
+            //        ValidIssuer = Configuration["JwtSettings:Issuer"],
+            //        ValidateIssuerSigningKey = true,
+            //        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtSettings:Key"])),
+            //        ValidateLifetime = true,
+            //        ClockSkew = TimeSpan.Zero
+            //    };
+            //});
+            #endregion
+
             // inject filters
             HostBaseFactory.InjectActionFilterGlobal(services, Configuration);
             // inject 
@@ -62,11 +89,7 @@ namespace Core.Api
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Core.Api v1"));
             }
-
-            //using var loggerFactory = LoggerFactory.Create(builder =>
-            //{
-            //    builder.AddSimpleConsole(i => i.ColorBehavior = LoggerColorBehavior.Disabled);
-            //});
+            //HostBaseFactory.ConfigureMidware(app);
 
             //var logger = loggerFactory.CreateLogger<Program>();
             app.UseExceptionHandler(exceptionHandlerApp =>

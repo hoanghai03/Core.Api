@@ -1,6 +1,8 @@
 ﻿using Core.Domain.Postgre;
 using Core.HostBase.Filters;
+using Core.HostBase.Middware;
 using CORE.Application;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceStack;
@@ -40,14 +42,25 @@ namespace Core.HostBase
                 options =>
                 {
                     options.Filters.Add<CustomExceptionFilter>();
+                    //options.Filters.Add<ApiKeyAttribute>();
                 }
             );
-
-            //services.AddMvc(options =>
-            //{
-            //    options.Filters.Add(new CustomExceptionFilter());
-            //});
-
+        }        
+        
+        public static void InjectAuthenticationFilterGlobal(IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddControllers(
+                options =>
+                {
+                    options.Filters.Add<AuthenticationFilter>();
+                    //options.Filters.Add<ApiKeyAttribute>();
+                }
+            );
         }
+
+        //public static void ConfigureMidware(IApplicationBuilder app)
+        //{
+        //    app.UseMiddleware<ApiKeyMiddleware>();
+        //}
     }
 }
