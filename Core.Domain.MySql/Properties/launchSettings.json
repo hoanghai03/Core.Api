@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Core.Domain.MySql": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:59455;http://localhost:59461"
+    }
+  }
+}

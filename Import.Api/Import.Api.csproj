@@ -11,6 +11,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Core.HostBase\Core.HostBase.csproj" />
     <ProjectReference Include="..\Core.MemoryCache\Core.MemoryCache.csproj" />
   </ItemGroup>
 

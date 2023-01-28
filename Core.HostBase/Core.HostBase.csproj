@@ -17,6 +17,8 @@
   <ItemGroup>
     <ProjectReference Include="..\CORE.Application\CORE.Application.csproj" />
     <ProjectReference Include="..\Core.Domain.Postgre\Core.Domain.Postgre.csproj" />
+    <ProjectReference Include="..\Core.Export\Core.Export.csproj" />
+    <ProjectReference Include="..\ExchangeBus.Kafka\ExchangeBus.Kafka.csproj" />
   </ItemGroup>
 
 </Project>

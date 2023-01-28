@@ -1,9 +1,12 @@
 ﻿using Core.Domain.Shared.Cache;
 using Core.Domain.Shared.Export;
+using Core.Domain.Shared.ModelKafka;
 using Core.MemoryCache;
+using ExchangeBus.Kafka.Interface;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
+using System.Runtime.CompilerServices;
 
 namespace Import.Api.Controllers
 {
@@ -12,17 +15,26 @@ namespace Import.Api.Controllers
     public class ExportController : ControllerBase
     {
         public ICached _cache;
-        public ExportController(ICached cache)
+        private readonly IKafkaProducer _producer;
+        public ExportController(ICached cache, IKafkaProducer producer)
         {
-            _cache= cache;
+            _cache = cache;
+            _producer = producer;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> Export([FromBody] ExportParam data) 
+        [HttpPost]
+        public async Task<IActionResult> ExportExcel([FromBody] ExportParam data) 
         {
             CacheRequest cacheRequest = new CacheRequest();
+            ExchangeModel exchangeModel = new ExchangeModel();
+            exchangeModel.dataType = data.ImportTypeInfo;
+            exchangeModel.exportId = data.ExportId;
+
             // set cache
-            _cache.SetCache<ExportParam>(cacheRequest, data);
+            //_cache.SetCache<ExportParam>(cacheRequest, data);
+
+            _producer.PushAsync(exchangeModel);
+
             return Ok();
 
         }

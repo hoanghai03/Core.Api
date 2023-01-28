@@ -1,6 +1,8 @@
 ﻿using Core.Domain.Postgre;
+using Core.Export;
 using Core.HostBase.Filters;
 using CORE.Application;
+using ExchangeBus.Kafka;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ServiceStack;
@@ -32,6 +34,17 @@ namespace Core.HostBase
         public static void InjectServices(IServiceCollection services,IConfiguration configuration)
         {
             ApplicationFactory.InjectServices(services, configuration);
+        }        
+        
+        /// <summary>
+        /// inject service dùng cho xuất khẩu excel
+        /// </summary>
+        /// <param name="services"></param>
+        /// <param name="configuration"></param>
+        public static void InjectServicesExport(IServiceCollection services,IConfiguration configuration)
+        {
+            ExchangeBusKafkaFactory.InjectServices(services, configuration);
+            ExportFactory.InjectServices(services, configuration);
         }
 
         public static void InjectActionFilterGlobal(IServiceCollection services, IConfiguration configuration)
