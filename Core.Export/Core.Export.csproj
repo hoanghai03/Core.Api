@@ -8,8 +8,19 @@
 
   <ItemGroup>
     <PackageReference Include="Aspose.Cells" Version="23.1.0" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.19.0" />
+    <PackageReference Include="EPPlus" Version="6.1.2" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.2.9" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="7.0.0" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Domain.Postgre\Core.Domain.Postgre.csproj" />
+    <ProjectReference Include="..\Core.Domain.Shared\Core.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Core.Domain\Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>

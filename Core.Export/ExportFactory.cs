@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Export.Services;
+using Core.Domain.Repos;
+using Core.Domain.Postgre.Base;
 
 namespace Core.Export
 {
@@ -15,6 +17,7 @@ namespace Core.Export
         public static void InjectServices(IServiceCollection services, IConfiguration configuration)
         {
             services.AddScoped<IExportService, ExportService>();
+            services.AddScoped<IBaseRepo, BaseRepo>();
         }
     }
 }

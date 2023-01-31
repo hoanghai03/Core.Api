@@ -13,5 +13,7 @@ namespace Core.Domain.Shared.ModelKafka
     {
         public string dataType { get; set; }
         public Guid exportId { get; set; }
+        public int exportType { get; set; }
+        public Type type { get; set; }
     }
 }

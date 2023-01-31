@@ -29,7 +29,9 @@ namespace ExchangeBus.Kafka.Services
                 // topic/partitions of interest. By default, offsets are committed
                 // automatically, so in this example, consumption will only start from the
                 // earliest message in the topic 'my-topic' the first time you run the program.
-                AutoOffsetReset = 0
+                AutoOffsetReset = AutoOffsetReset.Earliest,
+                // Disable auto-committing of offsets.
+                EnableAutoCommit = false
             };
             _config.Topic = "is-topic";
             _consumer = new ConsumerBuilder<string,string>(_config.Consumer).Build();
@@ -62,7 +64,7 @@ namespace ExchangeBus.Kafka.Services
                         throw ex;
                     }
                 }
-            } catch (OperationCanceledException)
+            } catch (KafkaException)
             {
                 _consumer.Close();
             }

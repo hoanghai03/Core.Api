@@ -68,7 +68,8 @@ namespace Core.HostBase.Configurations
         {
             if (string.IsNullOrEmpty(_rootFolder))
             {
-                string basePath = AppContext.BaseDirectory;
+                //string basePath = AppContext.BaseDirectory;
+                string basePath = "D:\\Coding\\BE\\CoreAPI\\Core.Api";
                 string rootFolder = Environment.GetEnvironmentVariable(ROOT_FOLDER) ?? "";
 
                 rootFolder = Path.Combine(basePath, rootFolder);

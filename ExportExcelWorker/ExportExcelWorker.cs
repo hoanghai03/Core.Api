@@ -39,7 +39,11 @@ namespace ExportExcelWorkerr
                         switch (model.dataType)
                         {
                             case "export-grid":
-                                _exportService.ExportExcel(model.exportId);
+                                if(model.type != null)
+                                {
+                                _exportService.ExportExcel(model.exportId,model.type);
+
+                                }
                                 break;
                             default:
                                 break;

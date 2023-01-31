@@ -50,6 +50,9 @@ namespace Core.Domain.Repos
         Task<IList> QueryAsync(IDbConnection cnn, string sql, Dictionary<string,object> param = null, IDbTransaction transaction = null, int? commandTimeOut = null, CommandType? commandType = null);
 
         Task<PagingResult> GetPagingAsync(Type type, string sort, int skip, int take, string columns, string filter = null, string tableName = "", string schemaName = "", string viewName = "");
+        Task<ExportResult> GetAsync(Type type,string tableName = "", string schemaName = "", string viewName = "");
+
+        public string GetTableName(Type type, string tableName);
 
     }
 }

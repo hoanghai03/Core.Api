@@ -8,6 +8,6 @@ namespace Core.Export.Interface
 {
     public interface IExportService
     {
-        Task ExportExcel(Guid id);
+        Task ExportExcel(Guid id,Type type);
     }
 }

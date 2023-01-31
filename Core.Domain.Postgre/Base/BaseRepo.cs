@@ -276,7 +276,7 @@ namespace Core.Domain.Postgre.Base
             return data.ToList();
         }
 
-        protected virtual string GetTableName(Type type,string tableName)
+        public virtual string GetTableName(Type type,string tableName)
         {
             if(!string.IsNullOrEmpty(tableName))
             {
@@ -313,5 +313,28 @@ namespace Core.Domain.Postgre.Base
                 return $"{schema}.{view}";
             } else return $"{schema}.{table}";
         }
+
+        public virtual async Task<ExportResult> GetAsync(Type type,string tableName = "", string schemaName = "", string viewName = "")
+        {
+            var param = new Dictionary<string, object>();
+            var table = GetTableName(type, tableName);
+            var schema = GetSchemaName(type, schemaName);
+            var pagingSource = GetPagingSource(viewName, table, schema);
+            ExportResult result = new ExportResult();
+            IDbConnection cnn = null;
+            try
+            {
+                cnn = GetOpenConnection(DatabaseSide.ReadSide);
+
+                var sb = new StringBuilder($"Select * from {pagingSource}");
+                result.PageData = await QueryAsync(cnn, sb.ToString(), param);
+            }
+            finally
+            {
+                CloseConnection(cnn);
+            }
+            return result;
+        }
+
     }
 }

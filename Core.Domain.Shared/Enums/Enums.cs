@@ -61,4 +61,10 @@ namespace Core.Domain.Shared.Enums
         smallint = 18,
         smallint_arr = 19
     }
+
+    public enum ModelType : int
+    {
+        student = 0,
+        customer = 1
+    }
 }

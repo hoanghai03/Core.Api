@@ -25,10 +25,11 @@ namespace Import.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> ExportExcel([FromBody] ExportParam data) 
         {
-            CacheRequest cacheRequest = new CacheRequest();
+            //CacheRequest cacheRequest = new CacheRequest();
             ExchangeModel exchangeModel = new ExchangeModel();
             exchangeModel.dataType = data.ImportTypeInfo;
             exchangeModel.exportId = data.ExportId;
+            exchangeModel.exportType= data.ExportType;
 
             // set cache
             //_cache.SetCache<ExportParam>(cacheRequest, data);

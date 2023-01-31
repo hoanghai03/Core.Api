@@ -24,6 +24,14 @@ namespace Core.Domain.Shared.Cruds
         public bool Empty { get; set; }
     }
 
+    public class ExportResult
+    {
+        /// <summary>
+        /// Dữ liệu phân trang
+        /// </summary>
+        public IEnumerable PageData { get; set; }
+    }
+
     /// <summary>
     /// Chứa các thông tin dạng paging
     /// </summary>

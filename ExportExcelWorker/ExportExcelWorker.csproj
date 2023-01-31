@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Core.Export\Core.Export.csproj" />
+    <ProjectReference Include="..\Core.HostBase\Core.HostBase.csproj" />
     <ProjectReference Include="..\ExchangeBus.Kafka\ExchangeBus.Kafka.csproj" />
   </ItemGroup>
 </Project>

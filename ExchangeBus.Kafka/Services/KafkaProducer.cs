@@ -1,4 +1,5 @@
 ﻿using Confluent.Kafka;
+using Core.Domain.DI;
 using Core.Domain.Shared.ModelKafka;
 using ExchangeBus.Kafka.Interface;
 using ExchangeBus.Kafka.Model;
@@ -41,8 +42,26 @@ namespace ExchangeBus.Kafka.Services
         public async Task PushAsync(ExchangeModel exchangeModel)
         {
             var topic = _config.Topic;
+            exchangeModel.type = GetTypeModel(exchangeModel.exportType);
+            // lấy type của model
             await _producer.ProduceAsync(topic, new Message<string, string> { Key = exchangeModel.exportId.ToString(), Value = JsonConvert.SerializeObject(exchangeModel) });
             //_producer.Dispose();
+        }
+
+        public Type GetTypeModel(int exportType) 
+        {
+            switch (exportType)
+            {
+                case 0:
+                    return typeof(StudentEntity);
+                    break;
+                case 1:
+                    return typeof(CustomerEntity);
+                    break;
+                default:
+                    break;
+            }
+            return null; 
         }
     }
 }
